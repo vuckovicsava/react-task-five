@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import HomePage from './HomePage';
 import RegisterPage from './RegisterPage';
@@ -18,8 +18,7 @@ class App extends Component {
             <Route path="/register" component={RegisterPage}/>
             <Route path="/login" component={LoginPage}/>
             <Route path="/profile" component={ProfilePage}/>
-            <Route path="/404" component={NotFoundPage}/>
-            <Redirect to="/404"/>
+            <Route component={NotFoundPage}/>
           </Switch>
         </>
       </BrowserRouter>
