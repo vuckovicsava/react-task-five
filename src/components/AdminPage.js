@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getUsers } from '../helpers/storage';
+import UserItem from './UserItem';
 
 export default class AdminPage extends Component {
 
@@ -14,13 +15,9 @@ export default class AdminPage extends Component {
   }
 
   renderRegisteredUsers = () => {
-    return this.state.registeredUsers.map(user => {
-      return (
-        <div key={user.email}>
-          <h3>{user.email}</h3>
-        </div>
-      );
-    });
+    return this.state.registeredUsers.map(user => (
+      <UserItem key={user.email} user={user} />
+    ));
   }
 
   render() {

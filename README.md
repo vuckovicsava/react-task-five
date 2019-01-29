@@ -10,6 +10,7 @@ DONE add validation function
 - add the ability for the user to change his email and password (using a modal most likely)
 - navbar links (login/register/logout) based on authentication status of the user
 - modal for deleting users from admin page 
+- create another version of the project where index route contains links to login and register
 
 OPTIONAL
 

@@ -8,7 +8,7 @@
   }
 
   &__link-group {
-    padding: 1.6rem 1.8rem;
+    padding: 1.6rem 0;
 
     &--right {
       margin-left: auto;
@@ -21,6 +21,33 @@
 
     &:not(:last-child) {
       margin-right: 1.8rem;
+    }
+  }
+}
+
+@media screen and (max-width: $md) {
+  .navbar {
+    font-size: 1.5rem;
+    
+    .container {
+      display: flex;
+    }
+  
+    &__link-group {
+      padding: 1.4rem 0;
+  
+      &--right {
+        margin-left: auto;
+      }
+    }
+  
+    &__link {
+      color: $electric-blue;
+      text-decoration: none;
+  
+      &:not(:last-child) {
+        margin-right: 1.3rem;
+      }
     }
   }
 }

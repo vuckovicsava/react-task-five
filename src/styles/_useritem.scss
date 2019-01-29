@@ -1,0 +1,65 @@
+.user {
+  font-size: 1.7rem;
+  background-color: $white;
+  padding: 1.6rem;
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+
+  &__info {
+    font-weight: bold;
+    flex: 1;
+    color: $yankees-blue;
+
+    span {
+      display: block;
+
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &__remove {
+    color: $red;
+    cursor: pointer;
+    padding: .5rem;
+
+    &:hover {
+      background-color: $red;
+      color: $white;
+    }
+  }
+}
+
+@media screen and (max-width: $md) {
+  .user {
+    font-size: 1.5rem;
+    padding: 1.3rem;
+    margin-bottom: 1.3rem;
+  
+    &__info {
+      span {
+        &:not(:last-child) {
+          margin-bottom: .7rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .user {
+    font-size: 1.4rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  
+    &__info {
+      span {
+        &:not(:last-child) {
+          margin-bottom: .7rem;
+        }
+      }
+    }
+  }
+}
