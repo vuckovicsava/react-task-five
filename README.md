@@ -1,8 +1,8 @@
 TODO
 
-- admin localStorage when app gets rendered for the first time
+DONE admin localStorage when app gets rendered for the first time
+DONE create localStorage helpers
 - create a protected route component & simulate authentication following the tutorial from react router documentation 
-- create localStorage helpers
 - create the admin route layout
 - style the app
 - add validation function
