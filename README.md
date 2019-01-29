@@ -2,11 +2,9 @@ TODO
 
 DONE admin localStorage when app gets rendered for the first time
 DONE create localStorage helpers
+DONE add validation function
 - create a protected route component & simulate authentication following the tutorial from react router documentation 
 - create the admin route layout
-- style the app
-- add validation function
-- make the submit button disabled until the form is error free
 - write unit tests for existing components
 - style the app and make it responsive
 - add the ability for the user to change his email and password (using a modal most likely)
