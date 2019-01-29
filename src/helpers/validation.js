@@ -1,6 +1,6 @@
 import isemail from 'isemail';
+import { findUserByEmail } from './storage';
 
-// returns errors object if the data is not valid, returns true if the data is valid
 export default function validate(username, email, password, confirmPassword) {
   const errors = {
     username: [],
@@ -24,6 +24,11 @@ export default function validate(username, email, password, confirmPassword) {
     errors.email.push('Email address is not valid');
   }
 
+  // email has to be unique in localStorage
+  if (findUserByEmail(email)) {
+    errors.email.push('This email address is already being used by another account');
+  }  
+
   // password has to be long enough
   if (password.length < 5) {
     errors.password.push('Password has to be at least 5 characters long');
@@ -34,8 +39,8 @@ export default function validate(username, email, password, confirmPassword) {
     errors.confirmPassword.push('Passwords don\'t match');
   }
 
-  // return true if the data is valid
-  if (Object.values(errors).every(arr => arr.length === 0)) return true;
+  // return false if the data is valid
+  if (Object.values(errors).every(arr => arr.length === 0)) return false;
   
   return errors;
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import FormField from './FormField';
+import validate from '../helpers/validation';
+import { createUser } from '../helpers/storage';
 
 export default class RegisterPage extends Component {
 
@@ -16,39 +18,38 @@ export default class RegisterPage extends Component {
     confirmPassword: ''
   }
 
-  validate = () => {
-    const { username, email, password, confirmPassword } = this.state;
-
-    // username has to be long enough
-    if (username.length <= 8) {
-      this.setState(state => {
-        const errors = state.errors;
-        errors.username.push('username has to be 8 characters or longer');
-        return { errors };
-      });
-    }
-
-    // username has to be lowercase
-    // valid email
-    // username lowercase and > 8 chars
-    // password > 5 chars
-    // confirmPassword = password
-    
+  clearState = () => {
+    this.setState({
+      errors: {
+        username: [],
+        email: [],
+        password: [],
+        confirmPassword: []
+      },
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    });
   }
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit = e => {
     e.preventDefault();
     const { username, email, password, confirmPassword } = this.state;
-    console.log({
-      username,
-      email,
-      password,
-      confirmPassword
-    });
+    
+    const errors = validate(username, email, password, confirmPassword);
+    if (!errors) {
+      // successful registration
+      createUser({ username, email, password });
+      this.clearState();
+      // redirect or whatever LATER
+    } else {
+      this.setState({ errors });
+    }
   }
 
   render() {
