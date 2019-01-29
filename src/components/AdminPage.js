@@ -19,7 +19,7 @@ export default class AdminPage extends Component {
         <div key={user.email}>
           <h3>{user.email}</h3>
         </div>
-      )
+      );
     });
   }
 

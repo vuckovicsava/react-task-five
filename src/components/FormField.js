@@ -10,6 +10,7 @@ const FormField = ({ errors, name, label, type, value, handleChange }) => (
       id={name}
       value={value}
       onChange={handleChange}
+      required
     />
   </div>
 );

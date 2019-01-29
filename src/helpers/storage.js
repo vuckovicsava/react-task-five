@@ -17,6 +17,7 @@ export const getUsers = () => {
 
 export const createUser = user => {
   const users = getUsers();
+  // check if exists
   users.push(user);
   localStorage.setItem('users', JSON.stringify(users));
 }

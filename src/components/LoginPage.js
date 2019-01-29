@@ -30,7 +30,7 @@ export default class LoginPage extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-      <FormField 
+        <FormField 
           errors={errors.email}
           name="email"
           label="Email"
