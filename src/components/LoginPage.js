@@ -29,7 +29,7 @@ export default class LoginPage extends Component {
     const { errors, email, password } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
         <FormField 
           errors={errors.email}
           name="email"
@@ -46,7 +46,7 @@ export default class LoginPage extends Component {
           value={password}
           handleChange={this.handleChange}
         />
-        <button type="submit">Login</button>
+        <button className="form__submit" type="submit">Login</button>
       </form>
     );
   }

@@ -1,0 +1,63 @@
+.form {
+  width: 85%;
+  margin: 5rem auto;
+  padding: 1.6rem;
+  background-color: $white;
+
+  &__field-wrapper {
+    display: flex;
+    height: 4rem;
+  }
+
+  &__group {
+    margin-bottom: 1.6rem;
+  }
+
+  &__error {
+    color: $red;
+  }
+
+  &__label {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background-color: $yankees-blue;
+    color: $electric-blue;
+  }
+
+  &__field {
+    flex: 5;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 0 1.6rem;
+  }
+
+  &__actions {
+    display: flex;
+    height: 4rem;
+  }
+
+  &__submit {
+    flex: 2;
+    display: block;
+    padding: 0;
+    border: none;
+    background-color: $yankees-blue;
+    color: $electric-blue;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    &:hover {
+      font-size: 1.7rem;
+    }
+  }
+
+  &__link {
+    flex: 5;
+    display: flex;
+    align-items: center;
+    padding: 0 1.6rem;
+    font-size: 1.5rem;
+  }
+}

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { createUser } from '../helpers/storage';
 import FormField from './FormField';
 import validate from '../helpers/validation';
-import { createUser } from '../helpers/storage';
 
 export default class RegisterPage extends Component {
 
@@ -56,7 +57,7 @@ export default class RegisterPage extends Component {
     const { errors, username, email, password, confirmPassword } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
         <FormField 
           errors={errors.username}
           name="username"
@@ -89,7 +90,13 @@ export default class RegisterPage extends Component {
           value={confirmPassword}
           handleChange={this.handleChange}
         />
-        <button type="submit">Register</button>
+        <div className="form__actions">
+          <button className="form__submit" type="submit">Register</button>
+          <p className="form__link">
+            Already have an account?
+            <Link to="/register">Register</Link> here
+          </p>
+        </div>
       </form>
     );
   }
