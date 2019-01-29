@@ -1,0 +1,25 @@
+.navbar {
+  background-color: $yankees-blue;
+  font-size: 1.8rem;
+  
+  .container {
+    display: flex;
+  }
+
+  &__link-group {
+    padding: 1.6rem 1.8rem;
+
+    &--right {
+      margin-left: auto;
+    }
+  }
+
+  &__link {
+    color: $electric-blue;
+    text-decoration: none;
+
+    &:not(:last-child) {
+      margin-right: 1.8rem;
+    }
+  }
+}
