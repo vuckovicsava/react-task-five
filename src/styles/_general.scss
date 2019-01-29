@@ -34,3 +34,11 @@ body {
     width: $xl - 20px;
   }
 }
+
+// other
+.hide-on-sm {
+  display: block;
+  @media screen and (max-width: $sm) {
+    display: none;
+  }
+}

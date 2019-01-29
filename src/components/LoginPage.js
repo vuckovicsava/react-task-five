@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import FormField from './FormField';
 
 export default class LoginPage extends Component {
@@ -46,7 +47,13 @@ export default class LoginPage extends Component {
           value={password}
           handleChange={this.handleChange}
         />
+        <div className="form__actions">
         <button className="form__submit" type="submit">Login</button>
+          <span className="form__link">
+            Don't have an account?
+            <Link to="/register">Register</Link>
+          </span>
+        </div>
       </form>
     );
   }

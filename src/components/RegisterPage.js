@@ -85,17 +85,17 @@ export default class RegisterPage extends Component {
         <FormField 
           errors={errors.confirmPassword}
           name="confirmPassword"
-          label="Confirm Password"
+          label="Confirm"
           type="password"
           value={confirmPassword}
           handleChange={this.handleChange}
         />
         <div className="form__actions">
           <button className="form__submit" type="submit">Register</button>
-          <p className="form__link">
+          <span className="form__link">
             Already have an account?
-            <Link to="/register">Register</Link> here
-          </p>
+            <Link to="/login">Login</Link>
+          </span>
         </div>
       </form>
     );
