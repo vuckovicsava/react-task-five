@@ -6,8 +6,16 @@ import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
 import ProfilePage from './ProfilePage';
 import NotFoundPage from './NotFoundPage';
+import { createAdminObject, createUsers, getUsers, findUserByEmail } from '../helpers/storage';
 
 class App extends Component {
+  componentDidMount() {
+    createAdminObject();
+    createUsers();
+    // testing
+    console.log(getUsers());
+  }
+
   render() {
     return (
       <BrowserRouter>
