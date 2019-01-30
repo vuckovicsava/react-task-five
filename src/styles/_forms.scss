@@ -1,5 +1,6 @@
 .form {
   width: 85%;
+  min-width: 300px;
   margin: 5rem auto;
   padding: 1.6rem;
   background-color: $white;
@@ -34,6 +35,11 @@
     flex: 5;
     font-family: 'Ubuntu', sans-serif;
     padding: 0 1.6rem;
+    border: 1px solid $light-gray;
+
+    &:focus {
+      outline: 1px solid $purple;
+    }
   }
 
   &__actions {
@@ -46,13 +52,15 @@
     display: block;
     padding: 0;
     border: none;
-    background-color: $yankees-blue;
-    color: $electric-blue;
-    font-size: 1.5rem;
+    background-color: $white;
+    color: $yankees-blue;
+    font-size: 1.6rem;
+    font-weight: bold;
     cursor: pointer;
 
     &:hover {
-      font-size: 1.7rem;
+      background-color: $yankees-blue;
+      color: $electric-blue;
     }
   }
 

@@ -50,12 +50,14 @@
 
 @media screen and (max-width: $sm) {
   .user {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     padding: 1rem;
     margin-bottom: 1rem;
   
     &__info {
       span {
+        font-weight: normal;
+        
         &:not(:last-child) {
           margin-bottom: .7rem;
         }
