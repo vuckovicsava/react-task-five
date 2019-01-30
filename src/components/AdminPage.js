@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { getUsers } from '../helpers/storage';
 import UserItem from './UserItem';
+import Modal from './Modal';
 
 export default class AdminPage extends Component {
 
   state = {
-    registeredUsers: []
+    registeredUsers: [],
+    showModal: true // false later
   }
 
   componentDidMount() {
@@ -21,12 +23,19 @@ export default class AdminPage extends Component {
   }
 
   render() {
-    const { registeredUsers: users } = this.state;
+    const { registeredUsers: users, showModal } = this.state;
     if (!users || users.length === 0) {
       return (<h1>No registered users</h1>);
     } else {
       return (
-        <div>{this.renderRegisteredUsers()}</div>
+        <div>
+          {this.renderRegisteredUsers()}
+          { showModal && (
+            <Modal title="Delete User">
+              <h1>Are You Sure?</h1>
+            </Modal>
+          )}
+        </div>
       );
     }
   }

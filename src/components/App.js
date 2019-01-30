@@ -30,7 +30,8 @@ class App extends Component {
                 <Route path="/register" component={RegisterPage}/>
                 <Route path="/login" component={LoginPage}/>
                 <ProtectedRoute path="/profile" component={ProfilePage}/>
-                <ProtectedRoute path='/admin' component={AdminPage}/>
+                {/* <ProtectedRoute path='/admin' component={AdminPage}/> */}
+                <Route path="/admin" component={AdminPage}/>
                 <Route component={NotFoundPage}/>
               </Switch>
             </div>
