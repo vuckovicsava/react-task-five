@@ -18,6 +18,7 @@
   &__link {
     color: $electric-blue;
     text-decoration: none;
+    cursor: pointer;
 
     &:not(:last-child) {
       margin-right: 1.8rem;

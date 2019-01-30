@@ -18,7 +18,7 @@ export class Provider extends Component {
 
   logout = () => {
     this.setState({
-      idLoggedIn: false,
+      isLoggedIn: false,
       isAdmin: false,
       loggedInUser: {}
     });
