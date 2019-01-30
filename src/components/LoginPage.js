@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { isAdmin, getAdmin, findUserByEmail } from '../helpers/storage';
+import { Consumer } from '../context';
 import FormField from './FormField';
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
 
   state = {
     errors: {
@@ -20,10 +22,43 @@ export default class LoginPage extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
-    console.log({
-      email,
-      password
-    });
+    const { login } = this.props;
+
+    if (isAdmin({ email, password })) {
+      // user is admin, log him in and redirect to /admin
+      login(getAdmin(), true, () => this.props.history.push('/admin'));
+    } else {
+      const user= findUserByEmail(email);
+      // check if user exists in the storage and password is correct
+      if (user) {
+        if (user.password === password) {
+          // clear the state
+          this.setState({
+            errors: {
+              email: [],
+              password: []
+            },
+            email: '',
+            password: ''
+          });
+          // log the user in and redirect him to /
+          login(user, false, () => this.props.history.push('/'));
+        } else {
+          this.setState(state => {
+            const errors = state.errors;
+            errors.password.push('The password you entered is incorrect');
+            return { errors };
+          });
+        }
+      } else {
+        // user doesn't exist in storage
+        this.setState(state => {
+          const errors = state.errors;
+          errors.email.push('Unable to find the user with this email');
+          return { errors };
+        });
+      }
+    }
   }
 
   render() {
@@ -58,3 +93,12 @@ export default class LoginPage extends Component {
     );
   }
 }
+
+// extract login function from context and make it available as props
+const LoginPageWithContext = (props) => (
+  <Consumer>
+    {({ login }) => <LoginPage login={login} {...props} />}
+  </Consumer>
+);
+
+export default LoginPageWithContext;

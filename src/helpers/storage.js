@@ -5,6 +5,13 @@ export const createAdminObject = () => {
   }));
 }
 
+export const getAdmin = () => JSON.parse(localStorage.getItem('admin'));
+
+export const isAdmin = user => {
+  const admin = getAdmin();
+  return (user.email === admin.email && user.password === admin.password);
+}
+
 export const createUsers = () => {
   if (!localStorage.getItem('users')) {
     localStorage.setItem('users', JSON.stringify([]));

@@ -7,20 +7,29 @@ export class Provider extends Component {
   state = {
     isLoggedIn: false,
     isAdmin: false,
-    loggedInUser: {}
+    loggedInUser: null
   }
 
-  login = isAdmin => {
-    isAdmin 
-      ? this.setState({ isLoggedIn: true, isAdmin: true })
-      : this.setState({ isLoggedIn: true });
+  login = (userObj, isAdmin, cb) => {
+    if (isAdmin) {
+      this.setState({
+        isLoggedIn: true,
+        isAdmin: true,
+        loggedInUser: userObj
+      }, cb);
+    } else {
+      this.setState({
+        isLoggedIn: true,
+        loggedInUser: userObj
+      }, cb);
+    }
   }
 
   logout = () => {
     this.setState({
       isLoggedIn: false,
       isAdmin: false,
-      loggedInUser: {}
+      loggedInUser: null
     });
   }
 

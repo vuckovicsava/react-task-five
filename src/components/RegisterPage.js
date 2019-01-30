@@ -19,21 +19,6 @@ export default class RegisterPage extends Component {
     confirmPassword: ''
   }
 
-  clearState = () => {
-    this.setState({
-      errors: {
-        username: [],
-        email: [],
-        password: [],
-        confirmPassword: []
-      },
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    });
-  }
-
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -44,10 +29,23 @@ export default class RegisterPage extends Component {
     
     const errors = validate(username, email, password, confirmPassword);
     if (!errors) {
-      // successful registration
+      // create the user in localStorage
       createUser({ username, email, password });
-      this.clearState();
-      // redirect or whatever LATER
+      // clear the component state
+      this.setState({
+        errors: {
+          username: [],
+          email: [],
+          password: [],
+          confirmPassword: []
+        },
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      });
+      // redirect to login page
+      this.props.history.push('/login');
     } else {
       this.setState({ errors });
     }
