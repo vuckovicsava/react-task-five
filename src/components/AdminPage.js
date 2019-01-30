@@ -31,7 +31,10 @@ export default class AdminPage extends Component {
         <div>
           {this.renderRegisteredUsers()}
           { showModal && (
-            <Modal title="Delete User">
+            <Modal 
+              title="Delete User"
+              onClose={() => this.setState({ showModal: false })}
+            >
               <h1>Are You Sure?</h1>
             </Modal>
           )}

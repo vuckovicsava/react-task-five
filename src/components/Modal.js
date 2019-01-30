@@ -17,14 +17,22 @@ export default class Modal extends Component {
   }
 
   render() {
+    const { title, onClose, children } = this.props;
+
     return ReactDOM.createPortal(
       <div className="modal">
         <div className="modal__content">
           <div className="modal__header">
-            <h3 className="modal__title">{this.props.title}</h3>
+            <h3 className="modal__title">{title}</h3>
+            <span 
+              className="modal__close"
+              onClick={onClose}
+            >
+              <i class="fas fa-window-close"></i>
+            </span>
           </div>
           <div className="modal__body">
-            {this.props.children}
+            {children}
           </div>
         </div>
       </div>,

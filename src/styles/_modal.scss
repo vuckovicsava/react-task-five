@@ -11,15 +11,35 @@
 
   &__content {
     background-color: white;
-    width: 40%;
-    height: 40%;
+    width: 50%;
   }
 
   &__header {
+    height: 5.5rem;
+    padding: 0 1.6rem;
+    background: $yankees-blue;
+    color: $electric-blue;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+  }
 
+  &__title {
+    margin: 0;
+    letter-spacing: 1.5px;
+  }
+
+  &__close {
+    margin-left: auto;
+    font-size: 2rem;
+    cursor: pointer;
+
+    &:hover {
+      font-size: 2.1rem;
+    }
   }
 
   &__body {
-
+    padding: 1.6rem;
   }
 }
