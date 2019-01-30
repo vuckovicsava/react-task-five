@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { createAdminObject, createUsers } from '../helpers/storage';
 import { Provider } from '../context';
+import ProtectedRoute from './ProtectedRoute';
 import Navbar from './Navbar';
 import HomePage from './HomePage';
 import RegisterPage from './RegisterPage';
@@ -25,11 +26,11 @@ class App extends Component {
             <Navbar/>
             <div className="container">
               <Switch>
-                <Route exact path="/" component={HomePage}/>
+                <ProtectedRoute exact path="/" component={HomePage}/>
                 <Route path="/register" component={RegisterPage}/>
                 <Route path="/login" component={LoginPage}/>
-                <Route path="/profile" component={ProfilePage}/>
-                <Route path='/admin' component={AdminPage}/>
+                <ProtectedRoute path="/profile" component={ProfilePage}/>
+                <ProtectedRoute path='/admin' component={AdminPage}/>
                 <Route component={NotFoundPage}/>
               </Switch>
             </div>

@@ -21,7 +21,7 @@ export class Provider extends Component {
       idLoggedIn: false,
       isAdmin: false,
       loggedInUser: {}
-    })
+    });
   }
 
   render() {
@@ -29,7 +29,7 @@ export class Provider extends Component {
       ...this.state,
       login: this.login,
       logout: this.logout
-    }
+    };
 
     return (
       <Context.Provider value={contextValue}>
