@@ -65,7 +65,7 @@ export default class AdminPage extends Component {
               title="Delete User"
               onClose={this.closeModal}
             >
-              <strong>
+              <strong className="warning">
                 <i className="fas fa-exclamation-triangle"></i>
                   Please confirm this action
                 <i className="fas fa-exclamation-triangle"></i>
