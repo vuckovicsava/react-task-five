@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getUsers } from '../helpers/storage';
+import { getUsers, deleteUser } from '../helpers/storage';
 import UserItem from './UserItem';
 import Modal from './Modal';
 
@@ -7,7 +7,8 @@ export default class AdminPage extends Component {
 
   state = {
     registeredUsers: [],
-    showModal: true // false later
+    showModal: false,
+    emailToDelete: ''
   }
 
   componentDidMount() {
@@ -16,9 +17,38 @@ export default class AdminPage extends Component {
     });
   }
 
+  handleDeleteUserClick = email => {
+    this.setState({
+      showModal: true,
+      emailToDelete: email
+    });
+  }
+
+  removeUser = () => {
+    // remove from localStorage
+    deleteUser(this.state.emailToDelete);
+    // remove from the state
+    this.setState(state => {
+      const updated = state.registeredUsers.filter(u => u.email !== state.emailToDelete);
+      return {
+        registeredUsers: updated,
+        showModal: false,
+        emailToDelete: ''
+      };
+    })
+  }
+
+  closeModal = () => {
+    this.setState({ showModal: false });
+  }
+
   renderRegisteredUsers = () => {
     return this.state.registeredUsers.map(user => (
-      <UserItem key={user.email} user={user} />
+      <UserItem 
+        key={user.email} 
+        user={user}
+        onDeleteClick={() => this.handleDeleteUserClick(user.email)}
+      />
     ));
   }
 
@@ -33,9 +63,19 @@ export default class AdminPage extends Component {
           { showModal && (
             <Modal 
               title="Delete User"
-              onClose={() => this.setState({ showModal: false })}
+              onClose={this.closeModal}
             >
-              <h1>Are You Sure?</h1>
+              <strong>
+                <i className="fas fa-exclamation-triangle"></i>
+                  Please confirm this action
+                <i className="fas fa-exclamation-triangle"></i>
+              </strong>
+              <button className="button button--danger" onClick={this.removeUser}>
+                Delete
+              </button>
+              <button className="button button--primary" onClick={this.closeModal}>
+                Cancel
+              </button>
             </Modal>
           )}
         </div>

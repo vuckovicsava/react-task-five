@@ -28,7 +28,7 @@ export default class Modal extends Component {
               className="modal__close"
               onClick={onClose}
             >
-              <i class="fas fa-window-close"></i>
+              <i className="fas fa-window-close"></i>
             </span>
           </div>
           <div className="modal__body">
