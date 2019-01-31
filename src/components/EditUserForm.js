@@ -13,15 +13,24 @@ export default class EditUserForm extends Component {
     password: ''
   }
 
-  handleChange = e => {
-    this.setState({ [e.target.value]: e.target.value });
+  componentDidMount() {
+    this.setState({ 
+      username: this.props.user.username
+    });
+  }
+
+  handleChange = e => this.setState({ [e.target.value]: e.target.value });
+
+  handleSubmit = e => {
+    e.preventDefault();
+    // edit user process that requires different aproach to validation
   }
 
   render() {
     const { errors, username, password, oldPassword } = this.state;
 
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <FormField
           errors={errors.username}
           name="username"
@@ -46,6 +55,12 @@ export default class EditUserForm extends Component {
           value={password}
           handleChange={this.handleChange}
         />
+        <div className="form__actions">
+          <button className="form__submit">Update</button>
+          <div className="form__link">
+            {/* This div is empty on purpose because the layout relies on it */}
+          </div>
+        </div>
       </form>
     );
   }

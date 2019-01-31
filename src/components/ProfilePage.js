@@ -9,14 +9,6 @@ class ProfilePage extends Component {
     showModal: false
   }
 
-  handleEditUserClick = () => {
-    this.setState({ showModal: true });
-  }
-
-  closeModal = () => {
-    this.setState({ showModal: false });
-  }
-
   render() {
     const { username, email, password } = this.props.user;
 
@@ -27,12 +19,18 @@ class ProfilePage extends Component {
           <h1>{username}</h1>
           <h1>{email}</h1>
           <h1>{password}</h1>
-          <button onClick={this.handleEditUserClick}>EDIT USER</button>
+          <hr/>
+          <button onClick={() => this.setState({ showModal: true })}>
+            EDIT USER
+          </button>
         </div>
 
         { this.state.showModal && (
-          <Modal title="Edit User" onClose={this.closeModal}>
-            <EditUserForm />
+          <Modal 
+            title="Edit User" 
+            onClose={() => this.setState({ showModal: false })}
+          >
+            <EditUserForm user={this.props.user}/>
           </Modal>
         )} 
       </div>
