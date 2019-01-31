@@ -39,4 +39,11 @@ export const deleteUser = email => {
   localStorage.setItem('users', JSON.stringify(users));
 }
 
+export const editUser = user => {
+  let users = getUsers();
+  users = users.filter(u => u.email !== user.email);
+  users.push(user);
+  localStorage.setItem('users', JSON.stringify(users));
+}
+
 

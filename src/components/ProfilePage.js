@@ -30,7 +30,10 @@ class ProfilePage extends Component {
             title="Edit User" 
             onClose={() => this.setState({ showModal: false })}
           >
-            <EditUserForm user={this.props.user}/>
+            <EditUserForm 
+              user={this.props.user}
+              onEditSuccess={() => this.setState({ showModal: false })}  
+            />
           </Modal>
         )} 
       </div>

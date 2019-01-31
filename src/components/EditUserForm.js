@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { editUser } from '../helpers/storage';
+import { validateEdit } from '../helpers/validation';
 import FormField from './FormField';
 
 export default class EditUserForm extends Component {
@@ -6,6 +8,7 @@ export default class EditUserForm extends Component {
   state = {
     errors: {
       username: [],
+      oldPassword: [],
       password: []
     },
     username: '',
@@ -19,11 +22,44 @@ export default class EditUserForm extends Component {
     });
   }
 
-  handleChange = e => this.setState({ [e.target.value]: e.target.value });
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   handleSubmit = e => {
     e.preventDefault();
-    // edit user process that requires different aproach to validation
+    const { username, password, oldPassword } = this.state;
+
+    // check if the old password is correct
+    if (oldPassword === this.props.user.password) {
+      // check if the data is valid
+      const errors = validateEdit(username, password);
+      if (!errors) {
+        // edit the user in localStorage
+        const updatedUser = this.props.user;
+        updatedUser.password = password;
+        editUser(updatedUser);
+        // clear the component state
+        this.setState({
+          errors: {
+            username: [],
+            oldPassword: [],
+            password: []
+          },
+          username: this.props.user.username,
+          oldPassword: '',
+          password: ''
+        });
+        // close the modal
+        this.props.onEditSuccess();
+      } else {
+        this.setState({ errors });
+      }
+    } else {
+      this.setState(prevState => {
+        const errors = prevState.errors;
+        errors.oldPassword.push('Password is not correct');
+        return { errors };
+      });
+    }
   }
 
   render() {
@@ -40,7 +76,7 @@ export default class EditUserForm extends Component {
           handleChange={this.handleChange}
         />
         <FormField 
-          errors={null}
+          errors={errors.oldPassword}
           name="oldPassword"
           label="Old Password"
           type="password"
