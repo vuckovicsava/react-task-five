@@ -15,9 +15,15 @@ class LoginPage extends Component {
     password: ''
   }
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
+  addError = (field, message) => {
+    this.setState(state => {
+      const errors = state.errors;
+      errors[field].push(message);
+      return { errors };
+    });
   }
+
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   handleSubmit = e => {
     e.preventDefault();
@@ -44,21 +50,11 @@ class LoginPage extends Component {
           // log the user in and redirect him to /
           login(user, false, () => this.props.history.push('/'));
         } else {
-          this.setState(state => {
-            const errors = state.errors;
-            errors.password.push('The password you entered is incorrect');
-            return { errors };
-          });
-
-           this.setState({ nesto: '' })
+          this.addError('password', 'The password you entered is incorrect');
         }
       } else {
         // user doesn't exist in storage
-        this.setState(state => {
-          const errors = state.errors;
-          errors.email.push('Unable to find the user with this email');
-          return { errors };
-        });
+        this.addError('email', 'Unable to find the user with this email');
       }
     }
   }

@@ -27,9 +27,9 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <ProtectedRoute exact path="/" component={HomePage}/>
+                <ProtectedRoute path="/profile" component={ProfilePage}/>
                 <Route path="/register" component={RegisterPage}/>
                 <Route path="/login" component={LoginPage}/>
-                <ProtectedRoute path="/profile" component={ProfilePage}/>
                 <Route path="/admin" component={AdminPage}/>
                 <Route component={NotFoundPage}/>
               </Switch>

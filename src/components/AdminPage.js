@@ -29,18 +29,17 @@ export default class AdminPage extends Component {
     deleteUser(this.state.emailToDelete);
     // remove from the state
     this.setState(state => {
-      const updated = state.registeredUsers.filter(u => u.email !== state.emailToDelete);
+      const updatedUsers = state.registeredUsers.filter(u => u.email !== state.emailToDelete);
+      
       return {
-        registeredUsers: updated,
+        registeredUsers: updatedUsers,
         showModal: false,
         emailToDelete: ''
       };
     })
   }
 
-  closeModal = () => {
-    this.setState({ showModal: false });
-  }
+  closeModal = () => this.setState({ showModal: false });
 
   renderRegisteredUsers = () => {
     return this.state.registeredUsers.map(user => (
