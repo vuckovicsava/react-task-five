@@ -49,6 +49,8 @@ class LoginPage extends Component {
             errors.password.push('The password you entered is incorrect');
             return { errors };
           });
+
+           this.setState({ nesto: '' })
         }
       } else {
         // user doesn't exist in storage
