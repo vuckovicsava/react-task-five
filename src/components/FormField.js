@@ -14,7 +14,7 @@ const FormField = ({ errors, name, label, type, value, handleChange }) => (
         required
       />
     </div>
-    { errors.length > 0 && errors.map(err => (
+    { (errors && errors.length > 0) && errors.map(err => (
       <span key={err} className="form__error">{err}</span>)
     )}
   </div>
