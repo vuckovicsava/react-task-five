@@ -16,10 +16,10 @@ const Navbar = () => (
           <div className="navbar__link-group navbar__link-group--right">
             {
               isLoggedIn ? (
-                <span 
-                  className="navbar__link"
-                  onClick={logout}
-                >Logout</span>
+                <>
+                  <Link to="/profile" className="navbar__link">Profile</Link>
+                  <span className="navbar__link" onClick={logout}>Logout</span>
+                </>
               ) : (
                 <>
                   <Link to="/login" className="navbar__link">Login</Link>

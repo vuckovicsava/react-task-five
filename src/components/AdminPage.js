@@ -61,10 +61,7 @@ export default class AdminPage extends Component {
         <div>
           {this.renderRegisteredUsers()}
           { showModal && (
-            <Modal 
-              title="Delete User"
-              onClose={this.closeModal}
-            >
+            <Modal title="Delete User" onClose={this.closeModal}>
               <strong className="warning">
                 <i className="fas fa-exclamation-triangle"></i>
                   Please confirm this action
