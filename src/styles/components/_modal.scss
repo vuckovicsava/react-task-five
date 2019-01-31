@@ -17,11 +17,10 @@
   &__header {
     height: 5.5rem;
     padding: 0 1.6rem;
-    background: $yankees-blue;
-    color: $electric-blue;
     font-size: 1.7rem;
     display: flex;
     align-items: center;
+    @include darkbg;
   }
 
   &__title {

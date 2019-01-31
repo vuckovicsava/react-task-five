@@ -3,10 +3,10 @@
 
 @import 'general/reset';
 @import 'general/helpers';
+@import 'general/homepage';
 
-@import 'navbar';
-@import 'forms';
-@import 'useritem';
-@import 'modal';
-@import 'button';
-@import 'homepage';
+@import 'components/button';
+@import 'components/form';
+@import 'components/modal';
+@import 'components/navbar';
+@import 'components/useritem';

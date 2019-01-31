@@ -27,3 +27,8 @@
     @content;
   }
 }
+
+@mixin darkbg {
+  background-color: $yankees-blue;
+  color: $electric-blue;
+}
