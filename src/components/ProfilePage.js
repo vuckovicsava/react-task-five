@@ -30,10 +30,20 @@ class ProfilePage extends Component {
             title="Edit User" 
             onClose={() => this.setState({ showModal: false })}
           >
-            <EditUserForm 
-              user={this.props.user}
-              onEditSuccess={() => this.setState({ showModal: false })}  
-            />
+            { 
+              this.props.user.email === 'admin@admin.com' ? (
+                <strong className="warning">
+                  <i className="fas fa-exclamation-triangle"></i>
+                    Admin user is not able to change his password
+                  <i className="fas fa-exclamation-triangle"></i>
+                </strong>
+              ) : (
+                <EditUserForm 
+                  user={this.props.user}
+                  onEditSuccess={() => this.setState({ showModal: false })}  
+                />
+              )
+            }
           </Modal>
         )} 
       </div>
