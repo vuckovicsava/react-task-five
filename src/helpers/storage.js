@@ -35,9 +35,7 @@ export const findUserByEmail = email => {
 
 export const deleteUser = email => {
   let users = getUsers();
-  console.log(users);
   users = users.filter(u => u.email !== email);
-  console.log(users);
   localStorage.setItem('users', JSON.stringify(users));
 }
 
