@@ -1,6 +1,9 @@
-@import 'variables';
-@import 'mixins';
-@import 'general';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+@import 'general/reset';
+@import 'general/helpers';
+
 @import 'navbar';
 @import 'forms';
 @import 'useritem';

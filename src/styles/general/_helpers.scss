@@ -1,0 +1,37 @@
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include desktop {
+    width: $xl - 20px;
+  }
+
+  @media (min-width: $md) {
+    width: $md - 20px;
+  }
+  @media (min-width: $lg) {
+    width: $lg - 20px;
+  }
+}
+
+.hide-on-phone {
+  display: block;
+
+  @include phone {
+    display: none;
+  }
+}
+
+.warning {
+  display: block;
+  font-size: 1.8rem;
+  letter-spacing: 1.5px;
+  margin-bottom: .8rem;
+
+  @include phone {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+  }
+}
