@@ -14,13 +14,17 @@ class ProfilePage extends Component {
     return (
       <div className="profile full-width">
         <div className="profile__user-container container">
-          <img className="profile__picture" src={userImg} alt="user"/>
+          <div className="profile__picture">
+            <img src={userImg} alt="user"/>
+          </div>
           <div className="profile__user-info">
-            <h1>{username}</h1>
-            <h1>{email}</h1>
-            <hr/>
-            <button onClick={() => this.setState({ showModal: true })}>
-              EDIT USER
+            <span><strong>Username:</strong> {username}</span>
+            <span><strong>Email Address:</strong> {email}</span>
+            <button
+              className="button button--primary" 
+              onClick={() => this.setState({ showModal: true })}
+            >
+              Edit User
             </button>
           </div>
         </div>

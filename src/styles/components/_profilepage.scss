@@ -6,20 +6,76 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  padding: 3rem;
+  padding: 2rem 0;
 
   &__user-container {
     display: flex;
-    border: 1px solid red;
   }
 
   &__picture {
-    border: 1px solid red;
     flex: 1;
+    display: flex;
+
+    img {
+      width: 10rem;
+      height: 10rem;
+      margin: auto;
+    }
   }
 
   &__user-info {
-    flex: 2;
-    border: 1px solid black;
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    span {
+      font-size: 1.9rem;
+      display: block;
+      letter-spacing: .4px;
+    }
+
+    .button {
+      margin: 0;
+      width: 20rem;
+      text-transform: uppercase;
+    }
+  }
+
+  @include tablet-small {
+    &__user-info {
+      flex: 3;
+  
+      span {
+        font-size: 1.7rem;
+      }
+    }
+  }
+
+  @include phone {
+    padding: 1.5rem 0;
+
+    &__user-container {
+      flex-direction: column;
+    }
+
+    &__picture {
+      margin-bottom: 1rem;
+
+      img {
+        width: 8rem;
+        height: 8rem;
+      }
+    }
+
+    &__user-info {
+      align-items: center;
+
+      span {
+        font-size: 1.4rem;
+        letter-spacing: 0;
+        margin-bottom: .8rem;
+      }
+    }
   }
 }
