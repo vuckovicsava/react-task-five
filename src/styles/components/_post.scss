@@ -1,0 +1,31 @@
+.post {
+  margin-top: 1.6rem;
+  background: $white;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: .6rem 1.2rem;
+    border-bottom: 1px solid $light-gray;
+  }
+
+  &__image {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  &__username {
+    font-size: 2rem;
+    margin: 0;
+    margin-left: 1.2rem;
+  }
+
+  &__body {
+    padding: 1.2rem;
+  }
+
+  &__content {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+}
