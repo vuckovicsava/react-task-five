@@ -59,7 +59,7 @@ export default class EditUserForm extends Component {
           password: '',
           confirmPassword: ''
         });
-        // close the modal
+        // close the modal & show success message
         this.props.onEditSuccess();
       } else {
         this.setState(() => {

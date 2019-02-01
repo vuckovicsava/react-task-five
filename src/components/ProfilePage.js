@@ -7,16 +7,28 @@ import userImg from '../images/userimg.png';
 
 class ProfilePage extends Component {
   
-  state = { showModal: false }
+  state = { 
+    showModal: false,
+    successMsg: ''
+  }
 
   renderDummyPosts = () => {
     const dummyPosts = [];
     let numOfPosts = Math.floor(Math.random() * 5) + 4;
     while (numOfPosts > 0) {
-      dummyPosts.push(<DummyPost username={this.props.user.username} />);
+      dummyPosts.push(<DummyPost key={numOfPosts} username={this.props.user.username} />);
       numOfPosts--;
     }
     return dummyPosts;
+  }
+
+  handleEditSuccess = () => {
+    this.setState({
+      showModal: false,
+      successMsg: 'Your data has been updated successfully'
+    }, () => {
+      setTimeout(() => this.setState({ successMsg: '' }), 3000);
+    });
   }
 
   render() {
@@ -42,6 +54,8 @@ class ProfilePage extends Component {
           </div>
         </div>
 
+        { this.state.successMsg && <strong className="msg-success">{this.state.successMsg}</strong> }
+
         <div className="profile__posts container">
           {this.renderDummyPosts()}
         </div>
@@ -61,7 +75,7 @@ class ProfilePage extends Component {
               ) : (
                 <EditUserForm 
                   user={this.props.user}
-                  onEditSuccess={() => this.setState({ showModal: false })}  
+                  onEditSuccess={this.handleEditSuccess}  
                 />
               )
             }

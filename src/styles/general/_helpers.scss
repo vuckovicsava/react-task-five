@@ -46,3 +46,16 @@
     margin-top: 10vh;
   }
 }
+
+.msg-success {
+  display: block;
+  font-size: 1.8rem;
+  margin: 1.6rem auto;
+  color: $green;
+  letter-spacing: .5px;
+  text-align: center;
+
+  @include phone {
+    font-size: 1.4rem;
+  }
+}
