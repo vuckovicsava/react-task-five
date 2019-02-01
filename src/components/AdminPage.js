@@ -26,10 +26,10 @@ export default class AdminPage extends Component {
 
   removeUser = () => {
     // remove from localStorage
-    deleteUser(this.state.id);
+    deleteUser(this.state.idToDelete);
     // remove from the state
     this.setState(state => {
-      const updatedUsers = state.registeredUsers.filter(u => u.id !== state.id);
+      const updatedUsers = state.registeredUsers.filter(u => u.id !== state.idToDelete);
       
       return {
         registeredUsers: updatedUsers,
