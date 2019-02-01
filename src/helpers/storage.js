@@ -1,3 +1,5 @@
+import uuid from 'uuid';
+
 export const createAdminObject = () => {
   localStorage.setItem('admin', JSON.stringify({
     email: 'admin@admin.com',
@@ -24,6 +26,8 @@ export const getUsers = () => {
 
 export const createUser = user => {
   const users = getUsers();
+
+  user.id = uuid();
   users.push(user);
   localStorage.setItem('users', JSON.stringify(users));
 }
@@ -33,15 +37,20 @@ export const findUserByEmail = email => {
   return users.find(u => u.email === email);
 }
 
-export const deleteUser = email => {
+export const findUserById = id => {
+  const users = getUsers();
+  return users.find(u => u.id === id)
+}
+
+export const deleteUser = id => {
   let users = getUsers();
-  users = users.filter(u => u.email !== email);
+  users = users.filter(u => u.id !== id);
   localStorage.setItem('users', JSON.stringify(users));
 }
 
 export const editUser = user => {
   let users = getUsers();
-  users = users.filter(u => u.email !== user.email);
+  users = users.filter(u => u.id !== user.id);
   users.push(user);
   localStorage.setItem('users', JSON.stringify(users));
 }

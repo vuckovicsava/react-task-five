@@ -28,9 +28,9 @@ class App extends Component {
               <Switch>
                 <ProtectedRoute exact path="/" component={HomePage}/>
                 <ProtectedRoute path="/profile" component={ProfilePage}/>
+                <ProtectedRoute path="/admin" component={AdminPage}/>
                 <Route path="/register" component={RegisterPage}/>
                 <Route path="/login" component={LoginPage}/>
-                <Route path="/admin" component={AdminPage}/>
                 <Route component={NotFoundPage}/>
               </Switch>
             </div>

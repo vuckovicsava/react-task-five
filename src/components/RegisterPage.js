@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { createUser } from '../helpers/storage';
 import FormField from './FormField';
-import { validateRegister } from '../helpers/validation';
+import validate from '../helpers/validation';
 
 export default class RegisterPage extends Component {
 
@@ -25,7 +25,7 @@ export default class RegisterPage extends Component {
     e.preventDefault();
     const { username, email, password, confirmPassword } = this.state;
     
-    const errors = validateRegister(username, email, password, confirmPassword);
+    const errors = validate(username, email, password, confirmPassword, true);
     if (!errors) {
       // create the user in localStorage
       createUser({ username, email, password });

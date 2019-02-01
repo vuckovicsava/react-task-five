@@ -8,7 +8,7 @@ export default class AdminPage extends Component {
   state = {
     registeredUsers: [],
     showModal: false,
-    emailToDelete: ''
+    idToDelete: ''
   }
 
   componentDidMount() {
@@ -17,24 +17,24 @@ export default class AdminPage extends Component {
     });
   }
 
-  handleDeleteUserClick = email => {
+  handleDeleteUserClick = id => {
     this.setState({
       showModal: true,
-      emailToDelete: email
+      idToDelete: id
     });
   }
 
   removeUser = () => {
     // remove from localStorage
-    deleteUser(this.state.emailToDelete);
+    deleteUser(this.state.id);
     // remove from the state
     this.setState(state => {
-      const updatedUsers = state.registeredUsers.filter(u => u.email !== state.emailToDelete);
+      const updatedUsers = state.registeredUsers.filter(u => u.id !== state.id);
       
       return {
         registeredUsers: updatedUsers,
         showModal: false,
-        emailToDelete: ''
+        idToDelete: ''
       };
     })
   }
@@ -44,9 +44,9 @@ export default class AdminPage extends Component {
   renderRegisteredUsers = () => {
     return this.state.registeredUsers.map(user => (
       <UserItem 
-        key={user.email} 
+        key={user.id} 
         user={user}
-        onDeleteClick={() => this.handleDeleteUserClick(user.email)}
+        onDeleteClick={() => this.handleDeleteUserClick(user.id)}
       />
     ));
   }
@@ -54,7 +54,7 @@ export default class AdminPage extends Component {
   render() {
     const { registeredUsers: users, showModal } = this.state;
     if (!users || users.length === 0) {
-      return (<h1>No registered users</h1>);
+      return <h1 className="message-large">No registered users</h1>;
     } else {
       return (
         <div>
