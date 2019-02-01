@@ -10,7 +10,13 @@ class ProfilePage extends Component {
   state = { showModal: false }
 
   renderDummyPosts = () => {
-    return <DummyPost username={this.props.user.username} />
+    const dummyPosts = [];
+    let numOfPosts = Math.floor(Math.random() * 5) + 4;
+    while (numOfPosts > 0) {
+      dummyPosts.push(<DummyPost username={this.props.user.username} />);
+      numOfPosts--;
+    }
+    return dummyPosts;
   }
 
   render() {

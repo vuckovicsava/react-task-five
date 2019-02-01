@@ -28,4 +28,47 @@
     font-size: 1.6rem;
     margin: 0;
   }
+
+  @include tablet-small {
+    &__header {
+      padding: .5rem 1rem;
+    }
+
+    &__image {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    &__username {
+      font-size: 1.8rem;
+      margin-left: 1rem;
+    }
+
+    &__body {
+      padding: 1rem;
+    }
+
+    &__content {
+      font-size: 1.5rem;
+    }
+  }
+
+  @include phone {
+    &__header {
+      padding: .4rem 1rem;
+    }
+
+    &__image {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    &__username {
+      font-size: 1.7rem;
+    }
+
+    &__content {
+      font-size: 1.4rem;
+    }
+  }
 }
