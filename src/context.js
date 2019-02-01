@@ -7,7 +7,14 @@ export class Provider extends Component {
   state = {
     isLoggedIn: false,
     isAdmin: false,
-    loggedInUser: null
+    // loggedInUser: null
+    // testing
+    loggedInUser: {
+      username: 'testuser',
+      email: 'email@email.com',
+      password: 'somepw',
+      id: 12312321
+    }
   }
 
   login = (userObj, isAdmin, cb) => {

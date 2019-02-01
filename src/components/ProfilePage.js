@@ -2,28 +2,29 @@ import React, { Component } from 'react';
 import { Consumer } from '../context';
 import Modal from './Modal';
 import EditUserForm from './EditUserForm';
+import userImg from '../images/userimg.png';
 
 class ProfilePage extends Component {
   
-  state = {
-    showModal: false
-  }
+  state = { showModal: false }
 
   render() {
-    const { username, email, password } = this.props.user;
+    const { username, email } = this.props.user;
 
     return (
-      <div className="profile">
-        <img src="placeholdi" alt="user"/>
-        <div className="user__info">
-          <h1>{username}</h1>
-          <h1>{email}</h1>
-          <h1>{password}</h1>
-          <hr/>
-          <button onClick={() => this.setState({ showModal: true })}>
-            EDIT USER
-          </button>
+      <div className="profile full-width">
+        <div className="profile__user-container container">
+          <img className="profile__picture" src={userImg} alt="user"/>
+          <div className="profile__user-info">
+            <h1>{username}</h1>
+            <h1>{email}</h1>
+            <hr/>
+            <button onClick={() => this.setState({ showModal: true })}>
+              EDIT USER
+            </button>
+          </div>
         </div>
+        
 
         { this.state.showModal && (
           <Modal 

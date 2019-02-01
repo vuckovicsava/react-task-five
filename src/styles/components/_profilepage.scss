@@ -1,0 +1,25 @@
+.profile {
+  background: $white;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 3rem;
+
+  &__user-container {
+    display: flex;
+    border: 1px solid red;
+  }
+
+  &__picture {
+    border: 1px solid red;
+    flex: 1;
+  }
+
+  &__user-info {
+    flex: 2;
+    border: 1px solid black;
+  }
+}
